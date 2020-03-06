@@ -1,0 +1,31 @@
+[device_info]
+project_uid = trex
+site_uid = calg
+device_uid =
+
+[humidity]
+run = False
+cadence = 10
+
+[temperature]
+run = False
+cadence = 10
+
+[drive_capacity]
+run = True
+cadence = 600
+medium_limit = 75
+high_limit = 90
+
+[network]
+run = True 
+cadence = 10
+medium_limit = 75
+high_limit = 150
+
+[cpu_usage]
+run = True
+cadence = 5
+medium_limit = 50
+high_limit = 90
+

@@ -10,8 +10,7 @@ import re
 import psutil 
 
 CONFIG_FILE = "/usr/local/src/diagnostic-tool/conf/diagnosticd.conf"
-CPU_USAGE_CMD = "grep cpu /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}'"
-DRIVE_CAP_CMD = "df -h | grep 'data'"
+DRIVE_CAP_CMD = "df -H | grep '/dev/mmcblk1p1'"
 PING_CMD = "ping -c 2 google.ca"
 
 def network():
@@ -30,7 +29,7 @@ def cpu_usage():
     return psutil.cpu_percent()
 
 def drive_capacity():
-    return subprocess.run(DRIVE_CAP_CMD)
+    dc_out = subprocess.Popen(DRIVE_CAP_CMD, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()[0]
 
 #def humidity():
 #def temperature():
